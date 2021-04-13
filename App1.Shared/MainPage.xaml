@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="App1.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Microsoft.UI.Xaml.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:App1"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:primitives="using:Microsoft.Toolkit.Uwp.UI.Controls.Primitives"
+    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    x:DefaultBindMode="OneWay"
+    mc:Ignorable="d">
+    <Grid>
+        <toolkit:DataGrid AutoGenerateColumns="False" ItemsSource="{x:Bind Path=ViewModel.Items}">
+            <toolkit:DataGrid.Columns>
+                <toolkit:DataGridTemplateColumn Header="Test">
+                    <toolkit:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="local:TestViewModelItem">
+                            <ComboBox
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                DisplayMemberPath="Label"
+                                ItemsSource="{x:Bind Values}"
+                                SelectedItem="{x:Bind SelectedValue, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </toolkit:DataGridTemplateColumn.CellTemplate>
+                </toolkit:DataGridTemplateColumn>
+            </toolkit:DataGrid.Columns>
+        </toolkit:DataGrid>
+    </Grid>
+</Page>
